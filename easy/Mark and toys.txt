@@ -1,0 +1,18 @@
+
+/* find max of toys that can be bought
+sort array first 
+then take toys until run out of budget */
+public class Solution {
+
+    // Complete the maximumToys function below.
+    static int maximumToys(int[] prices, int k) {
+         Arrays.sort(prices);
+         int quantity = 0;
+         int currentCost = 0;
+         while (quantity < prices.length && currentCost < k){
+             currentCost += prices[quantity];
+             quantity++;
+         }
+         return quantity-1;
+
+    }
