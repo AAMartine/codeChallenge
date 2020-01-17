@@ -1,0 +1,69 @@
+/*
+  use of generics and 
+  two stacks to implement a queue
+*/
+class MyQueue<T>{
+    Stack<T> lifo;
+    Stack<T> fifo;
+
+    MyQueue(){
+         lifo = new Stack<T>();
+         fifo = new Stack<T>();
+    }
+
+    public void enqueue(T element){
+        lifo.push(element);
+    }
+
+    public T dequeue(){
+       if (fifo.empty()){
+           T current;
+           while (!lifo.empty()){
+               current = lifo.pop();
+               fifo.push(current);
+           }
+       }
+       
+       return fifo.pop();
+
+    }
+
+    public T peek(){
+      if (fifo.empty()){
+           T current;
+           while (!lifo.empty()){
+               current = lifo.pop();
+               fifo.push(current);
+           }
+       }
+       return fifo.peek();
+    }
+
+} 
+
+/* Linkedlist would have been an easier implementation */
+class MyQueue<T>{
+    LinkedList<T> lifo;
+    LinkedList<T> fifo;
+
+    MyQueue(){
+         lifo = new LinkedList<T>();
+         fifo = new LinkedList<T>();
+    }
+
+    public void enqueue(T element){
+        lifo.addFirst(element);
+        fifo.addLast(element);
+    }
+
+    public T dequeue(){
+       lifo.removeFirst();
+       return fifo.removeFirst();
+
+    }
+
+    public T peek(){
+       return fifo.peek();
+    }
+
+} 
